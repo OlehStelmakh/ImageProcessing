@@ -1,0 +1,82 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        WindowStartupLocation="CenterScreen"
+        Title="Image" Height="450" Width="800" Icon="Images/logo.png" MinWidth="800" MinHeight="450">
+    <Window.DataContext>
+        <local:MainCalculations/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3.7*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="1" Background="#FF404040">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3.7*"/>
+                <RowDefinition Height="90"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Margin="0,0,0,0.5">
+            <Button Margin="10,10,10,0" VerticalAlignment="Top" Height="35" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Command="{Binding OpenFileDialogCommand}">
+                <DockPanel HorizontalAlignment="Left" Height="35" LastChildFill="False" VerticalAlignment="Top" Width="179">
+                    <Image HorizontalAlignment="Right" Height="22" VerticalAlignment="Top" Width="35" Source="Images/solve.png" Margin="0,4,0,0"/>
+                    <Label Content="Open an image" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Width="145" FontSize="19" Foreground="White" Margin="0,-3,0,0"/>
+                </DockPanel>
+            </Button>
+                <Button Name="HistogramButton" Margin="10,10,10,0" VerticalAlignment="Top" Height="35" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Click="ButtonClickHistogram">
+                <DockPanel HorizontalAlignment="Left" Height="35" LastChildFill="False" VerticalAlignment="Top" Width="179">
+                    <Image HorizontalAlignment="Right" Height="22" VerticalAlignment="Top" Width="35" Source="Images/solve.png" Margin="0,4,0,0"/>
+                    <Label Content="Histogram" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Width="145" FontSize="19" Foreground="White" Margin="0,-3,0,0"/>
+                </DockPanel>
+            </Button>
+                <Button Name="BinaryButton" Margin="10,10,10,0" VerticalAlignment="Top" Height="35" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Command="{Binding BinaryImageCommand}">
+                <DockPanel HorizontalAlignment="Left" Height="35" LastChildFill="False" VerticalAlignment="Top" Width="179">
+                    <Image HorizontalAlignment="Right" Height="22" VerticalAlignment="Top" Width="35" Source="Images/solve.png" Margin="0,4,0,0"/>
+                    <Label Content="Binary image" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Width="145" FontSize="19" Foreground="White" Margin="0,-3,0,0"/>
+                </DockPanel>
+            </Button>
+                <Button Name="GrayScaleButton" Margin="10,10,10,0" VerticalAlignment="Top" Height="35" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Command="{Binding GrayScaleImageCommand}">
+                <DockPanel HorizontalAlignment="Left" Height="35" LastChildFill="False" VerticalAlignment="Top" Width="179">
+                    <Image HorizontalAlignment="Right" Height="22" VerticalAlignment="Top" Width="35" Source="Images/solve.png" Margin="0,4,0,0"/>
+                    <Label Content="Gray scale" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Width="145" FontSize="19" Foreground="White" Margin="0,-3,0,0"/>
+                </DockPanel>
+            </Button>
+                <Button Name="MaskButton" Margin="10,10,10,0" VerticalAlignment="Top" Height="35" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Command="{Binding MaskImageCommand}">
+                <DockPanel HorizontalAlignment="Left" Height="35" LastChildFill="False" VerticalAlignment="Top" Width="179">
+                    <Image HorizontalAlignment="Right" Height="22" VerticalAlignment="Top" Width="35" Source="Images/solve.png" Margin="0,4,0,0"/>
+                    <Label Content="Mask" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Width="145" FontSize="19" Foreground="White" Margin="0,-3,0,0"/>
+                </DockPanel>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="0,0,0,0.5">
+                <Button Margin="10,10,10,0" VerticalAlignment="Top" Height="35" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}" Command="{Binding UndoChangesImageCommand}">
+                <DockPanel HorizontalAlignment="Left" Height="35" LastChildFill="False" VerticalAlignment="Top" Width="180">
+                    <Image HorizontalAlignment="Right" Height="22" VerticalAlignment="Top" Width="35" Source="Images/cancel.png" Margin="0,4,0,0"/>
+                    <Label Content="Undo changes" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Width="145" FontSize="19" Foreground="White" Margin="0,-3,0,0"/>
+                </DockPanel>
+            </Button>
+            <Button Margin="10,0,10,9.8" Background="{x:Null}" Foreground="{x:Null}" BorderBrush="{x:Null}" Click="ButtonClickExit" Height="35" VerticalAlignment="Bottom">
+                <DockPanel Height="35" LastChildFill="False" Width="179">
+                    <Image Height="25" VerticalAlignment="Top" Width="35" Source="Images/exit.png" Margin="0,4,0,0" HorizontalAlignment="Right"/>
+                    <Label Content="Exit" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="35" Foreground="White" FontSize="19" Margin="0,-3,0,0"/>
+                </DockPanel>
+            </Button>
+        </StackPanel>
+        </Grid>
+
+        <Border Background="White" BorderBrush="#FF404040" BorderThickness="5" Grid.Row="0" Grid.Column="0">
+            <Image x:Name="ImageName"  Source="{Binding Image, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            
+        </Border>
+        
+
+    </Grid>
+</Window>
